@@ -286,7 +286,7 @@ internal class UIScrollViewViewController<Content: View>: UIViewController {
         // Create the UIScrollView
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceVertical = false
         scrollView.backgroundColor = .clear
         self.scrollView = scrollView
         
