@@ -75,9 +75,6 @@ internal extension BottomSheetView {
             self.topPadding
         )
         // Make the BottomSheet transition via move
-        .transition(.move(
-            edge: self.isIPadFloatingOrMac ? .top : .bottom
-        ))
     }
     
     func dragIndicator(with geometry: GeometryProxy) -> some View {
