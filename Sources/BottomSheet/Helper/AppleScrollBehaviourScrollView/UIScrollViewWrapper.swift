@@ -67,7 +67,7 @@ internal struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentabl
                 self.dragState = .none
             }
             
-            let velocityY = 0
+            let velocityY = 0.0
             
             self.completeGesture(
                 with: velocityY,
