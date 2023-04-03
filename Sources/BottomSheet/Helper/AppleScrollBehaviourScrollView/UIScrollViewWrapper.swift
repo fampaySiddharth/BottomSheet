@@ -68,7 +68,7 @@ internal struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentabl
             }
             
             let velocityY = 0
-            )
+            
             self.completeGesture(
                 with: velocityY,
                 in: viewController
