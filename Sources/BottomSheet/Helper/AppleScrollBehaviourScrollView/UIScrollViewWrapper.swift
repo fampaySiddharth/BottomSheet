@@ -178,16 +178,7 @@ internal struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentabl
             )
         }()
         
-        DispatchQueue.main.async {
-            self.contentOffsetAnimation = TimerAnimation(
-                duration: duration,
-                animations: { _, time in
-                    viewController.scrollView.contentOffset.y = restOffsetY + (
-                        exp(-10 * time) * (displacementY + (velocityY + 10 * displacementY) * time)
-                    )
-                }
-            )
-        }
+        
     }
     
     class Coordinator: NSObject, UIScrollViewDelegate {
