@@ -160,7 +160,7 @@ internal struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentabl
             0
         )
         let displacementY = viewController.scrollView.contentOffset.y - restOffsetY
-        let threshold = 0.5 / UIScreen.main.scale
+        let threshold = 0.05 / UIScreen.main.scale
         
         let duration: TimeInterval = {
             if abs(displacementY) == 0 && abs(velocityY) == 0 {
