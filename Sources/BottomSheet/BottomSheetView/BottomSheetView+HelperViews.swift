@@ -206,40 +206,7 @@ internal extension BottomSheetView {
     var mainGeometryReader: some View {
         GeometryReader { mainGeometry in
             Color.clear
-                .onReceive(Just(self.bottomSheetPosition.isDynamic)) { isDynamic in
-                    if isDynamic {
-                        if self.translation == 0 {
-                            // Update main content height when dynamic and not dragging
-                            self.dynamicMainContentHeight = mainGeometry.size.height
-                        }
-                    } else {
-                        // Reset main content height when not dynamic
-                        self.dynamicMainContentHeight = 0
-                    }
-                }
                 .onReceive(Just(self.configuration.isAppleScrollBehaviorEnabled)) { _ in
-                    if self.bottomSheetPosition.isDynamic {
-                        if self.translation == 0 {
-                            // Update main content height when dynamic and not dragging
-                            self.dynamicMainContentHeight = mainGeometry.size.height
-                        }
-                    } else {
-                        // Reset main content height when not dynamic
-                        self.dynamicMainContentHeight = 0
-                    }
-                }
-                .onReceive(Just(self.configuration.isResizable)) { _ in
-                    if self.bottomSheetPosition.isDynamic {
-                        if self.translation == 0 {
-                            // Update main content height when dynamic and not dragging
-                            self.dynamicMainContentHeight = mainGeometry.size.height
-                        }
-                    } else {
-                        // Reset main content height when not dynamic
-                        self.dynamicMainContentHeight = 0
-                    }
-                }
-                .onReceive(Just(self.mainContent)) { _ in
                     if self.bottomSheetPosition.isDynamic {
                         if self.translation == 0 {
                             // Update main content height when dynamic and not dragging
