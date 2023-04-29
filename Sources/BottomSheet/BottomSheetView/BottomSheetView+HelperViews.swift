@@ -206,18 +206,24 @@ internal extension BottomSheetView {
     var mainGeometryReader: some View {
         GeometryReader { mainGeometry in
             Color.clear
-                .onReceive(Just(self.configuration.isAppleScrollBehaviorEnabled)) { _ in
+                .preference(key: OffsetPreferenceKey.self, value: mainGeometry.frame(in: .global).origin)
+                .onPreferenceChange(OffsetPreferenceKey.self) { preferences in
+                    
                     if self.bottomSheetPosition.isDynamic {
                         if self.translation == 0 {
                             // Update main content height when dynamic and not dragging
-                            self.dynamicMainContentHeight = mainGeometry.size.height
+                            self.dynamicMainContentHeight =  preferences.y //mainGeometry.size.height
                         }
                     } else {
                         // Reset main content height when not dynamic
                         self.dynamicMainContentHeight = 0
                     }
+                    
+                    
+                    //self.size = preferences
                 }
         }
+        
     }
     
 #if !os(macOS)
@@ -357,3 +363,14 @@ internal extension BottomSheetView {
         }
     }
 }
+
+
+struct OffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+        value = nextValue()
+    }
+}
+
+
